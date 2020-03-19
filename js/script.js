@@ -38,15 +38,14 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list';
 
-function generateTitleLinks(customSelector = ''){
+function generateTitleLinks(tagSelector = '', authorSelector = ''){
 
   /* remove contents of titleList */
   const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
 
   /* for each article */
-  const articles = document.querySelectorAll(optArticleSelector + customSelector);
-  console.log(customSelector);
+  const articles = document.querySelectorAll(optArticleSelector + tagSelector + authorSelector);
   // let html = '';
     
   for (let article of articles) {
@@ -55,6 +54,7 @@ function generateTitleLinks(customSelector = ''){
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     titleList.insertAdjacentHTML('beforeend', linkHTML);
     // html = html + linkHTML;
+    
   }
   // titleList.innerHTML = html;
   const links = document.querySelectorAll('.titles a');
@@ -103,7 +103,7 @@ function tagClickHandler(event){
   const href = clickedElement.getAttribute('href');
   
   /* make a new constant "tag" and extract tag from the "href" constant */
-  const tag = href.slice(5,15);
+  const tag = href.slice(5);
 
   /* find all tag links with class active */
   const activeTagsLinks = document.querySelectorAll('a.active[href^="#tag-"]');
@@ -145,8 +145,8 @@ function addClickListenersToTags(){
 
 addClickListenersToTags();
 
-function generateAuthors(tagSelector = '', authorSelector = '') {
-  const articles = document.querySelectorAll(optArticleSelector + tagSelector + authorSelector);
+function generateAuthors() {
+  const articles = document.querySelectorAll(optArticleSelector);
   for (let article of articles) {
     const authorsWrapper = article.querySelector('.post-author');
     const href = article.getAttribute('data-author');
@@ -171,7 +171,7 @@ function authorClickHandler(event){
   event.preventDefault();
   const clickedElement = this;
   const href = clickedElement.getAttribute('href');
-  const author = href.slice(8,30);
+  const author = href.slice(8);
   const activeAuthorLinks = document.querySelectorAll('a.active[href^="#author-"]');
   for (let activeAuthorLink of activeAuthorLinks) {
     activeAuthorLink.classList.remove('active');
