@@ -54,7 +54,6 @@ function generateTitleLinks(tagSelector = '', authorSelector = ''){
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     titleList.insertAdjacentHTML('beforeend', linkHTML);
     // html = html + linkHTML;
-    
   }
   // titleList.innerHTML = html;
   const links = document.querySelectorAll('.titles a');
@@ -62,6 +61,8 @@ function generateTitleLinks(tagSelector = '', authorSelector = ''){
     link.addEventListener('click', titleClickHandler);
   }
 }
+
+generateTitleLinks();
 
 function generateTags() {
   /* find all articles */
