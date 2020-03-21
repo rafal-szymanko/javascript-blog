@@ -80,8 +80,30 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  a {
+    text-decoration: none;
+  }
   .active {
     font-weight: bold;
+  }
+}
+
+.list.tags {
+  li{
+    display: inline-block;
+    padding: 0 5px;
+    .tag-size-2 {
+      font-size: 150%;
+    };
+    .tag-size-3 {
+      font-size: 200%;
+    };
+    .tag-size-4 {
+      font-size: 250%;
+    };
+    .tag-size-5 {
+      font-size: 300%;
+    }
   }
 }
 
